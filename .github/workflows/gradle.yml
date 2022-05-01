@@ -33,7 +33,12 @@ jobs:
       with:
         arguments: build
         
-    - uses: actions/upload-artifact@v3
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        name: Package
-        path: build/libs
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          LICENSE.txt
+          *.jar
