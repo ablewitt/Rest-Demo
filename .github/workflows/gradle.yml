@@ -15,9 +15,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -29,7 +27,6 @@ jobs:
       uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
       with:
         arguments: build
-        
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.BUILD_RELEASE }}"
@@ -37,5 +34,4 @@ jobs:
         prerelease: true
         title: "Development Build"
         files: |
-          build/libs/LICENSE.txt
           build/libs/*.jar
